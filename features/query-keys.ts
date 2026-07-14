@@ -1,0 +1,17 @@
+export const userKeys = {
+    all: ["users"] as const,
+    lists: () => [...userKeys.all, "list"] as const,
+    list: (filters?: { page?: number; limit?: number; search?: string }) =>
+        [...userKeys.lists(), filters] as const,
+    details: () => [...userKeys.all, "detail"] as const,
+    detail: (id: number) => [...userKeys.details(), id] as const,
+};
+
+export const postKeys = {
+    all: ["posts"] as const,
+    lists: () => [...postKeys.all, "list"] as const,
+    list: (filters?: { page?: number; limit?: number; search?: string }) =>
+        [...postKeys.lists(), filters] as const,
+    details: () => [...postKeys.all, "detail"] as const,
+    detail: (id: number) => [...postKeys.details(), id] as const,
+};
